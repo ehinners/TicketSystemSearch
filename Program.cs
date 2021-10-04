@@ -22,7 +22,17 @@ namespace MediaLibrary
             var logger = NLog.Web.NLogBuilder.ConfigureNLog(path).GetCurrentClassLogger();
 
             logger.Info("NLOG Loaded");
-            Console.WriteLine("Hello World!");
+            
+
+            Movie movie = new Movie
+            {
+                mediaId = 123,
+                title = "Greatest Movie Ever, The (2020)",
+                genres = { "Comedy", "Romance" }
+            };
+
+            Console.WriteLine(movie.Display());
+            
         }
     }
 }
