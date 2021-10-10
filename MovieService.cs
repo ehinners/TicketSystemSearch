@@ -8,16 +8,29 @@ using NLog.Web;
 
 namespace MediaLibrary
 {  
-    public class MovieService
+    public static class MovieService
     {
-        public NLog.Logger logger;
+        public static NLog.Logger logger;
 
-        public void setLogger(NLog.Logger l)
+        public static void setLogger(NLog.Logger l)
         {
             logger = l;
         }
 
-        public Movie mapMovieFromCSV(string csv)
+        public static List<Movie> mapMoviesFromStringList(List<string> contents)
+        {
+            Movie tempMovie = new Movie();
+            List<Movie> movies = new List<Movie>();
+            foreach(string s in contents)
+            {
+                tempMovie = mapMovieFromCSV(s);
+                movies.Add(tempMovie);
+            }
+
+            return movies;
+        }
+
+        public static Movie mapMovieFromCSV(string csv)
         {
             Movie movie = new Movie();
 
@@ -106,7 +119,7 @@ namespace MediaLibrary
             return movie;
         }
 
-        private List<string> genreSplitter(string genreCSV)
+        private static List<string> genreSplitter(string genreCSV)
         {
             List<string> genres;
             genres = genreCSV.Split("|").ToList();
@@ -114,7 +127,7 @@ namespace MediaLibrary
         }
 
 
-        private TimeSpan spanParser(string ts)
+        private static TimeSpan spanParser(string ts)
         {
             TimeSpan runningTime;
 
