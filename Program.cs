@@ -19,7 +19,7 @@ namespace MediaLibrary
 
             logger.Info("NLOG Loaded");
 
-            Controller.setLogger(logger);
+            Model.setLogger(logger);
             Controller.mainLoop();
             
             

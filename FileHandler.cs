@@ -9,14 +9,8 @@ namespace MediaLibrary
 {  
     public static class FileHandler
     {
-        private static NLog.Logger logger;
         
         private static List<string> fileContents = new List<string>();
-
-        public static void setLogger(NLog.Logger l)
-        {
-            logger = l;
-        }
 
         public static List<string> getFileContents(string readFile)
         {
@@ -37,7 +31,7 @@ namespace MediaLibrary
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Message);
+                Model.getLogger().Error(ex.Message);
             }
             return fileContents;
         }

@@ -10,12 +10,8 @@ namespace MediaLibrary
 {  
     public static class MovieService
     {
-        public static NLog.Logger logger;
-
-        public static void setLogger(NLog.Logger l)
-        {
-            logger = l;
-        }
+        
+        //Model.getLogger()
 
         public static List<Movie> mapMoviesFromStringList(List<string> contents)
         {
@@ -65,7 +61,7 @@ namespace MediaLibrary
                     }
                     catch
                     {
-                        logger.Error("ID not Integer Value");
+                        Model.getLogger().Error("ID not Integer Value");
                     }
                     
                 }
@@ -138,7 +134,7 @@ namespace MediaLibrary
             }
             catch
             {
-                logger.Error("Running Time Not Valid TimeSpan");
+                Model.getLogger().Error("Running Time Not Valid TimeSpan");
                 runningTime = new TimeSpan();
             }
 

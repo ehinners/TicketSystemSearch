@@ -9,24 +9,18 @@ namespace MediaLibrary
 {  
     public static class Controller
     {
-        private static NLog.Logger logger;
         private static ArrayList options = new ArrayList()
         {
             "1","2"
         };
 
-        public static void setLogger(NLog.Logger l)
-        {
-            logger = l;
-        }
+        //Model.getLogger()
 
         public static void mainLoop()
         {
             string input = "ready";
 
             bool keepLoop = true;     
-            
-            MovieService.setLogger(logger);    
 
             while(keepLoop)
             {
