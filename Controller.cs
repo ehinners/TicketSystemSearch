@@ -22,10 +22,9 @@ namespace MediaLibrary
 
         public static void mainLoop()
         {
-            string esc = "done";
             string input = "ready";
 
-            bool keepLoop = true;
+            bool keepLoop = true;         
 
             while(keepLoop)
             {
