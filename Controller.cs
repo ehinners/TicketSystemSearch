@@ -24,7 +24,9 @@ namespace MediaLibrary
         {
             string input = "ready";
 
-            bool keepLoop = true;         
+            bool keepLoop = true;     
+            
+            MovieService.setLogger(logger);    
 
             while(keepLoop)
             {
