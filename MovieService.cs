@@ -13,6 +13,14 @@ namespace MediaLibrary
         
         //Model.getLogger()
 
+        public static void displayMovies(List<Movie> movies)
+        {
+            foreach(Movie m in movies)
+            {
+                m.Display();
+            }
+        }
+
         public static List<Movie> mapMoviesFromStringList(List<string> contents)
         {
             Movie tempMovie = new Movie();

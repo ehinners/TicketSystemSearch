@@ -10,7 +10,9 @@ namespace MediaLibrary
     public static class Model
     {
         private static NLog.Logger logger;
-        private static ArrayList options = new ArrayList();
+        private static List<string> fileContents;
+        private static List<Movie> movies;
+        private static string fileName;
 
         public static void setLogger(NLog.Logger l)
         {
@@ -21,6 +23,31 @@ namespace MediaLibrary
         {
             return logger;
         }
+
+        public static void setFileName(string fn)
+        {
+            fileName = fn;
+        }
+
+        public static List<string> getFileContents()
+        {
+            if(fileContents == null)
+            {
+                fileContents = FileHandler.getFileContents(fileName);
+            }
+            return fileContents;            
+        }
+
+        public static List<Movie> getMovies()
+        {
+            if(movies == null)
+            {
+                movies = MovieService.mapMoviesFromStringList(fileContents);
+            }
+            return movies;            
+        }
+
+        
 
         
 
