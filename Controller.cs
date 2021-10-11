@@ -41,13 +41,15 @@ namespace MediaLibrary
 
         private static void optionSelector(string input)
         {
-            
+            Model.getLogger().Info($"User Choice: \"{input}\"");
             if(input == "1")
             {
                 string csv = promptNewMovie();
                 Movie movie = MovieService.mapMovieFromCSVGenerateID(csv);
                 Model.addMovie(movie);
-                FileHandler.addLineToFile(Model.fileName ,csv);
+                FileHandler.addLineToFile(Model.fileName, MovieService.movieToCSV(movie));
+                UInt64 largestID = Model.getLargestID();
+                Model.getLogger().Info($"Media id {largestID} added");
             }
             if(input == "2")
             {

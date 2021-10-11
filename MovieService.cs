@@ -35,7 +35,39 @@ namespace MediaLibrary
             return mapMovieFromCSV(newCsv);
         }
 
-        
+        public static string movieToCSV(Movie movie)
+        {
+            bool notFirstGenre = false;
+            string filter;
+            //164979,"Women of '69, Unboxed",Documentary,unassigned,00:00:00
+            string csv = "";
+            filter = movie.mediaId.ToString();
+            csv += filter;
+            csv += ",";
+            filter = movie.title;
+            csv += filter;
+            csv += ",";
+
+            foreach(string genre in movie.genres)
+            {
+                if(notFirstGenre)
+                {
+                    csv+="|";
+                }
+                filter = genre;
+                csv += filter;
+                notFirstGenre = true;
+            }
+
+            csv += ",";
+            filter = movie.director;
+            csv += filter;
+            csv += ",";
+            filter = movie.runningTime.ToString();
+            csv += filter;
+            System.Console.WriteLine(csv);
+            return csv;
+        }
 
         public static Movie mapMovieFromCSV(string csv)
         {
