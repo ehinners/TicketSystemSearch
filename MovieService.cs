@@ -31,6 +31,7 @@ namespace MediaLibrary
             string newCsv =  newID.ToString();
             newCsv += ",";
             newCsv += csv;
+            System.Console.WriteLine(newCsv);
             return mapMovieFromCSV(newCsv);
         }
 

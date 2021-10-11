@@ -12,7 +12,7 @@ namespace MediaLibrary
         private static NLog.Logger logger;
         private static List<string> fileContents;
         private static List<Movie> movies;
-        private static string fileName;
+        public static string fileName;
 
         public static void setLogger(NLog.Logger l)
         {

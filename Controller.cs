@@ -44,8 +44,10 @@ namespace MediaLibrary
             
             if(input == "1")
             {
-                Movie movie = MovieService.mapMovieFromCSVGenerateID(promptNewMovie());
+                string csv = promptNewMovie();
+                Movie movie = MovieService.mapMovieFromCSVGenerateID(csv);
                 Model.addMovie(movie);
+                FileHandler.addLineToFile(Model.fileName ,csv);
             }
             if(input == "2")
             {
@@ -70,19 +72,20 @@ namespace MediaLibrary
                     {
                         View.creationPrompt(i);
                         selection = System.Console.ReadLine();
-                        TimeSpan runningTime;
+                        
 
                         try
                         {
-                            runningTime = TimeSpan.Parse(selection);
+                            TimeSpan.Parse(selection);
                             verifiedRuntime = true;
                         }
                         catch
                         {
                             Model.getLogger().Error("Input Not Valid TimeSpan");
-                            runningTime = new TimeSpan();
                         }
                     }
+                    newCsv += ",";
+                    newCsv += selection;
                 }
                 else
                 {

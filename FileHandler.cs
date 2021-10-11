@@ -35,5 +35,22 @@ namespace MediaLibrary
             }
             return fileContents;
         }
+
+        public static void addLineToFile(string writeFile, string newLine)
+        {
+            try
+            {
+                StreamWriter sw;
+                sw = File.AppendText(writeFile);
+
+                sw.WriteLine(newLine);
+                    
+                sw.Close(); // Saves the file 
+            }
+            catch (Exception ex)
+            {
+                Model.getLogger().Error(ex.Message);
+            }
+        }
     }
 }
