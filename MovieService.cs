@@ -25,6 +25,15 @@ namespace MediaLibrary
             return movies;
         }
 
+        public static Movie mapMovieFromCSVGenerateID(string csv)
+        {
+            UInt64 newID = Model.getLargestID() + 1;
+            string newCsv =  newID.ToString();
+            newCsv += ",";
+            newCsv += csv;
+            return mapMovieFromCSV(newCsv);
+        }
+
         
 
         public static Movie mapMovieFromCSV(string csv)

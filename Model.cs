@@ -47,11 +47,30 @@ namespace MediaLibrary
             return movies;            
         }
 
+        public static UInt64 getLargestID()
+        {
+            
+            UInt64 largestID = 0;
+            foreach(Movie m in getMovies())
+            {
+                if(m.mediaId > largestID)
+                {
+                    largestID = m.mediaId;
+                }
+            }
+            return largestID;
+        }
+
         public static int getNumAttributes()
         {
             Movie movie = new Movie();
             string[] lines = movie.Display().Split("\n");
             return lines.Length - 1;
+        }
+
+        public static void addMovie(Movie movie)
+        {
+            getMovies().Add(movie);
         }
 
         

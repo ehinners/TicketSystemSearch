@@ -44,7 +44,8 @@ namespace MediaLibrary
             
             if(input == "1")
             {
-                promptNewMovie();
+                Movie movie = MovieService.mapMovieFromCSVGenerateID(promptNewMovie());
+                Model.addMovie(movie);
             }
             if(input == "2")
             {
