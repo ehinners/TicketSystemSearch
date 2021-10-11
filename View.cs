@@ -16,6 +16,14 @@ namespace MediaLibrary
             "Enter to quit"
         };
 
+        private static ArrayList promptDisplay = new ArrayList()
+        {
+            "Enter movie title" , 
+            "Enter genre (or done to quit)", 
+            "Enter movie director",
+            "Enter running time (h:m:s)"
+        };
+
 
         public static void setMenuDisplay(ArrayList md)
         {
@@ -37,6 +45,11 @@ namespace MediaLibrary
             {
                 System.Console.WriteLine(m.Display());           
             }
+        }
+
+        public static void creationPrompt(int movieAttribute)
+        {
+            System.Console.WriteLine(promptDisplay[movieAttribute-1]);
         }
 
     }

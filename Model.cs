@@ -47,6 +47,13 @@ namespace MediaLibrary
             return movies;            
         }
 
+        public static int getNumAttributes()
+        {
+            Movie movie = new Movie();
+            string[] lines = movie.Display().Split("\n");
+            return lines.Length - 1;
+        }
+
         
 
         

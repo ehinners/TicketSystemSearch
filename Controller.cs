@@ -41,14 +41,75 @@ namespace MediaLibrary
 
         private static void optionSelector(string input)
         {
+            
             if(input == "1")
             {
-
+                promptNewMovie();
             }
             if(input == "2")
             {
                 View.displayMovies();
             }
+        }
+
+        private static string promptNewMovie()
+        {
+            string selection;
+            int movieAttribute = 1;
+            string newCsv = "";
+            bool verifiedRuntime = false;
+
+
+            for(int i = 1; i < Model.getNumAttributes(); i++)
+            {   
+                selection = "ready";
+                if(i == 4)
+                {
+                    while(!verifiedRuntime)
+                    {
+                        View.creationPrompt(i);
+                        selection = System.Console.ReadLine();
+                        TimeSpan runningTime;
+
+                        try
+                        {
+                            runningTime = TimeSpan.Parse(selection);
+                            verifiedRuntime = true;
+                        }
+                        catch
+                        {
+                            Model.getLogger().Error("Input Not Valid TimeSpan");
+                            runningTime = new TimeSpan();
+                        }
+                    }
+                }
+                else
+                {
+                    View.creationPrompt(i);
+                    if(i>1)
+                    {
+                        newCsv += ",";
+                    }
+                    newCsv += System.Console.ReadLine();
+                    if(i==2)
+                    {
+                        while(selection.ToUpper() != "DONE")
+                        {
+                            View.creationPrompt(i);
+                            selection = System.Console.ReadLine();
+                            if(selection.ToUpper() != "DONE")
+                            {
+                                newCsv += "|";
+                                newCsv += selection;
+                            }
+                        }
+                    }
+                }
+
+                
+            }
+
+            return newCsv;
         }
 
     }

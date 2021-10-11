@@ -25,11 +25,12 @@ namespace MediaLibrary
             return movies;
         }
 
+        
+
         public static Movie mapMovieFromCSV(string csv)
         {
             Movie movie = new Movie();
-            string[] lines = movie.Display().Split("\n");
-            int numAttributes = lines.Length - 1;
+            int numAttributes = Model.getNumAttributes();
 
             string[] movieAttributes;
             movieAttributes = csv.Split(",");
