@@ -10,7 +10,7 @@ namespace MediaLibrary
 {  
     public static class MovieService
     {
-        
+        // static utilities related to movie objects
         //Model.getLogger()
 
         public static List<Movie> mapMoviesFromStringList(List<string> contents)
@@ -25,6 +25,7 @@ namespace MediaLibrary
             return movies;
         }
 
+        // user input should not generate movie ids
         public static Movie mapMovieFromCSVGenerateID(string csv)
         {
             UInt64 newID = Model.getLargestID() + 1;
@@ -69,6 +70,14 @@ namespace MediaLibrary
             return csv;
         }
 
+
+        // turns csvs to movie objects
+        // includes some intricacies to potentially combat future changes to 
+        // additional movie file attributes
+        // handles commas found in movie titles by counting number of
+        // items the string Splits to and comparing it to a 
+        // dynamic measure of how many attributes are found in the media
+        // display method
         public static Movie mapMovieFromCSV(string csv)
         {
             Movie movie = new Movie();
@@ -145,6 +154,21 @@ namespace MediaLibrary
             List<string> genres;
             genres = genreCSV.Split("|").ToList();
             return genres;
+        }
+
+        // returns true if entered name is NOT unique
+        public static bool findNameRepeats(string movieName)
+        {
+            bool nameFound = false;
+            foreach(Movie m in Model.getMovies())
+            {
+                if(m.title == movieName)
+                {
+                    nameFound = true;
+                }
+            }
+
+            return nameFound;
         }
 
 

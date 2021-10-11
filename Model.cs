@@ -9,9 +9,18 @@ namespace MediaLibrary
 {  
     public static class Model
     {
+        // This class allows controller to communicate with services and views
+
+        // static instance of logger held so multiple instances don't have to be created
         private static NLog.Logger logger;
+
+        // static instance of file contents so multiple instances don't have to be created
         private static List<string> fileContents;
+
+        // static instance of movie list so multiple instances don't have to be created
         private static List<Movie> movies;
+
+
         public static string fileName;
 
         public static void setLogger(NLog.Logger l)
@@ -47,6 +56,7 @@ namespace MediaLibrary
             return movies;            
         }
 
+        // elminates redundancies in code requiring this value
         public static UInt64 getLargestID()
         {
             
@@ -61,6 +71,7 @@ namespace MediaLibrary
             return largestID;
         }
 
+        // useful in case number of attributes ever changes
         public static int getNumAttributes()
         {
             Movie movie = new Movie();

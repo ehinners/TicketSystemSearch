@@ -9,6 +9,9 @@ namespace MediaLibrary
 {  
     public static class View
     {
+
+        // this class handles all output to the user
+
         private static ArrayList menuDisplay = new ArrayList()
         {
             "1) Add Movie" , 
