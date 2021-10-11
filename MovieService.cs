@@ -13,14 +13,6 @@ namespace MediaLibrary
         
         //Model.getLogger()
 
-        public static void displayMovies(List<Movie> movies)
-        {
-            foreach(Movie m in movies)
-            {
-                m.Display();
-            }
-        }
-
         public static List<Movie> mapMoviesFromStringList(List<string> contents)
         {
             Movie tempMovie = new Movie();
@@ -30,24 +22,47 @@ namespace MediaLibrary
                 tempMovie = mapMovieFromCSV(s);
                 movies.Add(tempMovie);
             }
-
             return movies;
         }
 
         public static Movie mapMovieFromCSV(string csv)
         {
             Movie movie = new Movie();
-
             string[] lines = movie.Display().Split("\n");
             int numAttributes = lines.Length - 1;
 
             string[] movieAttributes;
             movieAttributes = csv.Split(",");
 
+            int futureModifier = numAttributes -5;
+
+            int genrePos = (movieAttributes.Length) -3 + futureModifier;
+            int directorPos = (movieAttributes.Length) -2 + futureModifier;
+            int runningTimePos = (movieAttributes.Length) -1 + futureModifier;
+
+            
+
             int movieAttribute = 1;
-            bool excededAttributes;
+            bool excededAttributes = false;
             string titleStitcher = "";
             TimeSpan tempRunningTime;
+
+            
+
+
+            try
+            {
+                movie.mediaId = (UInt16)int.Parse(movieAttributes[0]);
+            }
+            catch
+            {
+                Model.getLogger().Error("ID not Integer Value");
+            }
+
+
+            movie.runningTime = spanParser(movieAttributes[runningTimePos]);
+            movie.director = movieAttributes[directorPos];
+            movie.genres = genreSplitter(movieAttributes[genrePos]);
 
             if(movieAttributes.Length > numAttributes)
             {
@@ -58,68 +73,27 @@ namespace MediaLibrary
                 excededAttributes = false;
             }
 
+            movieAttribute = 1;
+
             
             foreach(string s in movieAttributes)
-            {
-                if(movieAttribute==1)
-                {
-                    try
-                    {
-                        movie.mediaId = (UInt16)int.Parse(s);
-                    }
-                    catch
-                    {
-                        Model.getLogger().Error("ID not Integer Value");
-                    }
-                    
-                }
+            {                
                 if(movieAttribute==2)
                 {
-                    movie.title = s;
+                    movie.title = s;            
+                    titleStitcher = movie.title;       
                 }
-                if(movieAttribute==3)
+                else if(movieAttribute-1 < (genrePos))
                 {
                     if(excededAttributes)
-                    {
-                        titleStitcher = movie.title;
+                    {   
+                        titleStitcher += ", ";
                         titleStitcher += s;
-                        movie.title = titleStitcher;
-                    }
-                    else
-                    {
-                        movie.genres = genreSplitter(s);
-                    }
-                }
-                if(movieAttribute==4)
-                {
-                    if(excededAttributes)
-                    {
-                        movie.genres = genreSplitter(s);
-                    }
-                    else
-                    {
-                        movie.director = s;
-                    }
-                }
-                if(movieAttribute==5)
-                {
-                    if(excededAttributes)
-                    {
-                        movie.director = s;
-                    }
-                    else
-                    {
-                        movie.runningTime = spanParser(s);
-                    }
-                }
-                if(movieAttribute==6)
-                {
-                    movie.runningTime = spanParser(s);
-                }
+                        movie.title = titleStitcher;     
+                    }                    
+                }          
                 movieAttribute++;
             }
-
-
             return movie;
         }
 

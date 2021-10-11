@@ -42,7 +42,7 @@ namespace MediaLibrary
         {
             if(movies == null)
             {
-                movies = MovieService.mapMoviesFromStringList(fileContents);
+                movies = MovieService.mapMoviesFromStringList(getFileContents());
             }
             return movies;            
         }

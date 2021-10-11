@@ -33,9 +33,21 @@ namespace MediaLibrary
                     if(s==input)
                     {
                         keepLoop = true;
-                        System.Console.WriteLine("Doing Action");
+                        optionSelector(input);
                     }                    
                 }
+            }
+        }
+
+        private static void optionSelector(string input)
+        {
+            if(input == "1")
+            {
+
+            }
+            if(input == "2")
+            {
+                View.displayMovies();
             }
         }
 

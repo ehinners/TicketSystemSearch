@@ -30,5 +30,14 @@ namespace MediaLibrary
             }
         }
 
+        public static void displayMovies()
+        {
+            List<Movie> movies = Model.getMovies();
+            foreach(Movie m in movies)
+            {
+                System.Console.WriteLine(m.Display());           
+            }
+        }
+
     }
 }
