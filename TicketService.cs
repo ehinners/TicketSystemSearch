@@ -12,6 +12,38 @@ namespace MediaLibrary
     {
         public static Ticket mapTicketFromCSVGenerateID(int type, string csv)
         {
+            int id = 0;
+            string newCsv;
+            Ticket ticket= new BugDefect();
+
+            if(type == 1)
+            {
+                id = Model.getLargestIDBD();
+                id++;
+            }
+            else if(type == 2)
+            {
+                id = Model.getLargestIDEH();
+                id++;
+            }
+            else if(type == 3)
+            {
+                id = Model.getLargestIDTK();
+                id++;
+            }
+            else
+            {
+                Model.getLogger().Error("Ticket Type Invalid");
+            }
+            
+            newCsv = id.ToString() + "," + csv;   
+            
+            ticket = mapTicketFromCSV(type, newCsv);     
+
+            return ticket;
+        }
+        public static Ticket mapTicketFromCSV(int type, string csv)
+        {
             Ticket ticket= new BugDefect();
 
             if(type == 1)
@@ -34,10 +66,12 @@ namespace MediaLibrary
             return ticket;
         }
 
-        private static Ticket baseMappingGenID(string csv, Ticket ticket)
+        private static Ticket baseMapping(string csv, Ticket ticket)
         {
             string[] csvsplit = csv.Split(",");
             string[] watchsplit;
+
+           
 
             int ticketAttribute = 1;
             int tempInt = -1;
@@ -75,7 +109,7 @@ namespace MediaLibrary
         private static BugDefect mapTicketBDFromCSV(string csv)
         {
             BugDefect ticket = new BugDefect();
-            ticket = (BugDefect)baseMappingGenID(csv, ticket);
+            ticket = (BugDefect)baseMapping(csv, ticket);
 
             string[] csvsplit = csv.Split(",");
 
@@ -96,7 +130,7 @@ namespace MediaLibrary
         private static Enhancement mapTicketEHFromCSV(string csv)
         {
             Enhancement ticket = new Enhancement();
-            ticket = (Enhancement)baseMappingGenID(csv, ticket);
+            ticket = (Enhancement)baseMapping(csv, ticket);
 
             string[] csvsplit = csv.Split(",");
 
@@ -129,7 +163,7 @@ namespace MediaLibrary
         private static Task mapTicketTKFromCSV(string csv)
         {
             Task ticket = new Task();
-            ticket = (Task)baseMappingGenID(csv, ticket);
+            ticket = (Task)baseMapping(csv, ticket);
             DateTime tempDue = new DateTime();
 
             string[] csvsplit = csv.Split(",");
@@ -150,6 +184,36 @@ namespace MediaLibrary
             }
 
             return ticket;
+        }
+
+        public static List<BugDefect> mapTicketsFromStringListBD(List<string> fileContents)
+        {
+            List<BugDefect> tickets = new List<BugDefect>();
+            foreach(string s in fileContents)
+            {
+                mapTicketFromCSV(1, s);
+            }
+            return tickets;
+        }
+
+        public static List<Enhancement> mapTicketsFromStringListEH(List<string> fileContents)
+        {
+            List<Enhancement> tickets = new List<Enhancement>();
+            foreach(string s in fileContents)
+            {
+                mapTicketFromCSV(2, s);
+            }
+            return tickets;
+        }
+
+        public static List<Task> mapTicketsFromStringListTK(List<string> fileContents)
+        {
+            List<Task> tickets = new List<Task>();
+            foreach(string s in fileContents)
+            {
+                mapTicketFromCSV(3, s);
+            }
+            return tickets;
         }
     }
 }

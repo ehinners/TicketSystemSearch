@@ -64,8 +64,6 @@ namespace MediaLibrary
                 {
                     typeChoice = typeSelector();
 
-                    System.Console.WriteLine(actionChoice + " " + typeChoice);
-
                     optionSelector(actionChoice, typeChoice);
                 }
                 
@@ -80,12 +78,10 @@ namespace MediaLibrary
         {
             if(action == 1)
             {
-                //addMovie();
                 addTicket(type);               
             }
             if(action == 2)
             {
-                //View.displayMovies();
                 //View.displayTickets(type);                
             }
         }
@@ -136,18 +132,20 @@ namespace MediaLibrary
         
 
         //creates a csv string through user prompt
-        //preppends a generated mediaID to the csv
+        //preppends a generated ticketID to the csv
         //adds csv to file
-        //maps csv  to a movie object
-        //adds movie object to list of movies found in model
+        //maps csv  to a ticket object
+        //adds ticket object to list of tickets found in model
         //logs the addition
 
         private static void addTicket(int type)
         {
             string csv = promptNewTicket(type);
-            System.Console.WriteLine(csv);
+            
             Ticket ticket;
             ticket = TicketService.mapTicketFromCSVGenerateID(type, csv);
+
+            
    // ->         TicketService.addTicket(type, ticket);
             //Model.addTicket(type, ticket);
             //FileHandler.addLineToFile(type, TicketService.ticketToCSV(ticket));

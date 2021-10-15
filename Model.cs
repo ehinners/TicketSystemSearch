@@ -25,8 +25,10 @@ namespace MediaLibrary
 
         private static List<string> taskFileContents;
 
-        // static instance of movie list so multiple instances don't have to be created
-        private static List<Movie> movies;
+        // static instance of ticket list so multiple instances don't have to be created
+        private static List<BugDefect> ticketsBD;
+        private static List<Enhancement> ticketsEH;
+        private static List<Task> ticketsTK;
 
 
         //public static string fileName;
@@ -96,7 +98,32 @@ namespace MediaLibrary
         }
 
         ////
+        public static List<BugDefect> getTicketsBD()
+        {
+            if(ticketsBD == null)
+            {
+                ticketsBD = TicketService.mapTicketsFromStringListBD(getBugDefectFileContents());
+            }
+            return ticketsBD;            
+        }
 
+        public static List<Enhancement> getTicketsEH()
+        {
+            if(ticketsEH == null)
+            {
+                ticketsEH = TicketService.mapTicketsFromStringListEH(getEnhancementsFileContents());
+            }
+            return ticketsEH;            
+        }
+
+        public static List<Task> getTicketsTK()
+        {
+            if(ticketsTK == null)
+            {
+                ticketsTK = TicketService.mapTicketsFromStringListTK(getTaskFileContents());
+            }
+            return ticketsTK;            
+        }
         /*
         public static List<Movie> getMovies()
         {
@@ -108,6 +135,48 @@ namespace MediaLibrary
         }*/
 
         // elminates redundancies in code requiring this value
+        
+        public static int getLargestIDBD()
+        {
+            
+            int largestID = 0;
+            foreach(Ticket t in getTicketsBD())
+            {
+                if(t.ticketId > largestID)
+                {
+                    largestID = t.ticketId;
+                }
+            }
+            return largestID;
+        }
+
+        public static int getLargestIDEH()
+        {
+            
+            int largestID = 0;
+            foreach(Ticket t in getTicketsEH())
+            {
+                if(t.ticketId > largestID)
+                {
+                    largestID = t.ticketId;
+                }
+            }
+            return largestID;
+        }
+
+        public static int getLargestIDTK()
+        {
+            
+            int largestID = 0;
+            foreach(Ticket t in getTicketsTK())
+            {
+                if(t.ticketId > largestID)
+                {
+                    largestID = t.ticketId;
+                }
+            }
+            return largestID;
+        }
         /*
         public static UInt64 getLargestID()
         {
