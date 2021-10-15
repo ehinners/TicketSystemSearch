@@ -11,9 +11,14 @@ namespace MediaLibrary
     {
         // Holds all valid inputs for main menu. If anything other than
         // what is listed here is input from the user, the program will end
-        private static ArrayList options = new ArrayList()
+        private static ArrayList actionOptions = new ArrayList()
         {
             "1","2"
+        };
+
+        private static ArrayList typeOptions = new ArrayList()
+        {
+            "1","2","3"
         };
 
         private static string genreEscape = "DONE";
@@ -23,6 +28,7 @@ namespace MediaLibrary
         // Displays menu
         // Takes User Input
         // Repeats 
+        /*
         public static void mainLoop()
         {
             string input = "ready";
@@ -44,21 +50,111 @@ namespace MediaLibrary
                     }                    
                 }
             }
-        }
+        } */
 
         // Delegates to other methods based on user input
-        private static void optionSelector(string input)
+        /*
+        private static int optionSelector(string input)
         {
             Model.getLogger().Info($"User Choice: \"{input}\"");
             if(input == "1")
             {
                 //addMovie();
+                return 1;
             }
             if(input == "2")
             {
                 //View.displayMovies();
+                return 2;
             }
+            Model.getLogger().Error("No Valid Choice Selected");
+            return -1;
+        }*/
+
+        private static int typeSelector()
+        {
+            string input = "ready";
+            int typeChoice = 0;  
+            bool verifiedType = false; 
+
+            verifiedType = false;
+            while(!verifiedType)
+            {
+                View.displayTypes();
+                input = Console.ReadLine();
+
+                verifiedType = false;
+                foreach(string s in typeOptions)
+                {
+                    if(s==input)
+                    {
+                        verifiedType = true;
+                        try
+                        {
+                            typeChoice = int.Parse(input);
+                        }
+                        catch
+                        {
+                            Model.getLogger().Error("No Valid Choice Selected");
+                        }
+                    }                 
+                }
+                if(!verifiedType)
+                {
+                    Model.getLogger().Error("No Valid Choice Selected");
+                }
+            } 
+
+            Model.getLogger().Info($"User Choice: \"{input}\"");
+            
+            return typeChoice;
         }
+
+        public static void mainLoop()
+        {
+            string input = "ready";
+            int actionChoice = 0;
+            int typeChoice = 0;
+
+            bool keepLoop = true;    
+            bool needsTypeChoice = false;
+
+            while(keepLoop)
+            {
+                View.displayMenu();
+                input = Console.ReadLine();
+
+                keepLoop = false;
+                needsTypeChoice = false;
+                foreach(string s in actionOptions)
+                {
+                    if(s==input)
+                    {                        
+                        try
+                        {
+                            actionChoice = int.Parse(input);
+                            keepLoop = true;
+                            needsTypeChoice = true;
+                        }
+                        catch
+                        {
+                            Model.getLogger().Error("No Valid Choice Selected");
+                        }
+                    }                    
+                }
+
+                if(needsTypeChoice)
+                {
+                    typeChoice = typeSelector();
+
+                    System.Console.WriteLine(actionChoice + " " + typeChoice);
+                }
+                
+            }            
+            
+        }
+
+        
 
         //creates a csv string through user prompt
         //preppends a generated mediaID to the csv
@@ -66,6 +162,8 @@ namespace MediaLibrary
         //maps csv  to a movie object
         //adds movie object to list of movies found in model
         //logs the addition
+
+        
 
         /*
         private static void addMovie()

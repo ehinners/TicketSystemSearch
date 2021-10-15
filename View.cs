@@ -14,9 +14,16 @@ namespace MediaLibrary
 
         private static ArrayList menuDisplay = new ArrayList()
         {
-            "1) ", 
-            "2) ", 
+            "1: To Create A New Ticket", 
+            "2: To View All Current Tickets", 
             "Enter to quit"
+        };
+
+        private static ArrayList typeDisplay = new ArrayList()
+        {
+            "1: Bug/Defect Ticket", 
+            "2: Enhancement Ticket", 
+            "3: Task Ticket"
         };
 
         private static ArrayList promptDisplay = new ArrayList()
@@ -36,6 +43,14 @@ namespace MediaLibrary
         public static void displayMenu()
         {
             foreach(string line in menuDisplay)
+            {
+                System.Console.WriteLine(line);
+            }
+        }
+
+        public static void displayTypes()
+        {
+            foreach(string line in typeDisplay)
             {
                 System.Console.WriteLine(line);
             }

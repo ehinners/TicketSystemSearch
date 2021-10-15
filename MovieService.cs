@@ -10,6 +10,7 @@ namespace MediaLibrary
 {  
     public static class MovieService
     {
+        /*
         // static utilities related to movie objects
         //Model.getLogger()
 
@@ -190,6 +191,6 @@ namespace MediaLibrary
             return runningTime;
 
         }
-
+        */
     }
 }
