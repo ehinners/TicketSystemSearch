@@ -21,6 +21,9 @@ namespace MediaLibrary
 
             Model.setLogger(logger);
             //Model.setFileName("movies.scrubbed.csv");
+            Model.setEnhancementsFile("Enhancements.csv");
+            Model.setTaskFileName("Task.csv");
+            Model.setBugDefectFile("Tickets.csv");
             Controller.mainLoop();
             
             

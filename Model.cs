@@ -15,13 +15,22 @@ namespace MediaLibrary
         private static NLog.Logger logger;
 
         // static instance of file contents so multiple instances don't have to be created
-        private static List<string> fileContents;
+        //private static List<string> fileContents;
+
+        private static List<string> bugDefectFileContents;
+
+        private static List<string> enhancementsFileContents;
+
+        private static List<string> taskFileContents;
 
         // static instance of movie list so multiple instances don't have to be created
         private static List<Movie> movies;
 
 
-        public static string fileName;
+        //public static string fileName;
+        public static string BugDefectFile;
+        public static string EnhancementsFile;
+        public static string TaskFile;
 
         public static void setLogger(NLog.Logger l)
         {
@@ -33,19 +42,53 @@ namespace MediaLibrary
             return logger;
         }
 
-        public static void setFileName(string fn)
+        public static void setBugDefectFile(string fn)
         {
-            fileName = fn;
+            BugDefectFile = fn;
         }
 
-        public static List<string> getFileContents()
+        public static List<string> getBugDefectFileContents()
         {
-            if(fileContents == null)
+            if(bugDefectFileContents == null)
             {
-                fileContents = FileHandler.getFileContents(fileName);
+                bugDefectFileContents = FileHandler.getFileContents(BugDefectFile);
             }
-            return fileContents;            
+            return bugDefectFileContents;            
         }
+
+        ////
+
+        public static void setEnhancementsFile(string fn)
+        {
+            EnhancementsFile = fn;
+        }
+
+        public static List<string> getEnhancementsFileContents()
+        {
+            if(enhancementsFileContents == null)
+            {
+                enhancementsFileContents = FileHandler.getFileContents(EnhancementsFile);
+            }
+            return enhancementsFileContents;            
+        }
+
+        ////
+
+        public static void setTaskFileName(string fn)
+        {
+            TaskFile = fn;
+        }
+
+        public static List<string> getTaskFileContents()
+        {
+            if(taskFileContents == null)
+            {
+                taskFileContents = FileHandler.getFileContents(TaskFile);
+            }
+            return taskFileContents;            
+        }
+
+        ////
 
         /*
         public static List<Movie> getMovies()

@@ -52,11 +52,11 @@ namespace MediaLibrary
             Model.getLogger().Info($"User Choice: \"{input}\"");
             if(input == "1")
             {
-                addMovie();
+                //addMovie();
             }
             if(input == "2")
             {
-                View.displayMovies();
+                //View.displayMovies();
             }
         }
 
@@ -66,6 +66,8 @@ namespace MediaLibrary
         //maps csv  to a movie object
         //adds movie object to list of movies found in model
         //logs the addition
+
+        /*
         private static void addMovie()
         {
             string csv = promptNewMovie();
@@ -74,12 +76,14 @@ namespace MediaLibrary
             FileHandler.addLineToFile(Model.fileName, MovieService.movieToCSV(movie));
             UInt64 largestID = Model.getLargestID();
             Model.getLogger().Info($"Media id {largestID} added");
-        }
+        }*/
 
         // gets the prompt from the view
         // builds a csv along with user input
         // loops the input for genres until user types "done"
         // loops input for runtime until it parses to a TimeSpan object without exception
+
+        /*
         private static string promptNewMovie()
         {
             string selection;
@@ -156,7 +160,7 @@ namespace MediaLibrary
             }
 
             return newCsv;
-        }
+        }*/
 
     }
 
