@@ -28,10 +28,31 @@ namespace MediaLibrary
 
         private static ArrayList promptDisplay = new ArrayList()
         {
-            "Enter " , 
-            "Enter (or done to quit)", 
-            "Enter ",
-            "Enter "
+            "Enter Summary" , 
+            "Enter Status", 
+            "Enter Priority",
+            "Enter Submitter",
+            "Enter Assigned",
+            $"Enter Watcher(or {Model.getWatcherEscape()} to quit)"
+        };
+
+        private static ArrayList bugDefectPrompt = new ArrayList()
+        {
+            "Enter Severity" 
+        };
+
+        private static ArrayList enhancementPrompt = new ArrayList()
+        {
+            "Enter Software" , 
+            "Enter Cost", 
+            "Enter Reason",
+            "Enter Estimate"
+        };
+
+        private static ArrayList taskPrompt = new ArrayList()
+        {
+            "Enter Project Name" , 
+            "Enter Due Date"
         };
 
 
@@ -66,9 +87,24 @@ namespace MediaLibrary
             }
         } */
 
-        public static void creationPrompt(int movieAttribute)
+        public static void creationPrompt(int ticketAttribute)
         {
-            System.Console.WriteLine(promptDisplay[movieAttribute-1]);
+            System.Console.WriteLine(promptDisplay[ticketAttribute-1]);
+        }
+
+        public static void creationPromptBD(int ticketAttribute)
+        {
+            System.Console.WriteLine(bugDefectPrompt[ticketAttribute-1]);
+        }
+
+        public static void creationPromptEH(int ticketAttribute)
+        {
+            System.Console.WriteLine(enhancementPrompt[ticketAttribute-1]);
+        }
+
+        public static void creationPromptTK(int ticketAttribute)
+        {
+            System.Console.WriteLine(taskPrompt[ticketAttribute-1]);
         }
 
     }

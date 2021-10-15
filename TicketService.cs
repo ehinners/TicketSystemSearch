@@ -18,11 +18,11 @@ namespace MediaLibrary
             {
                 ticket = mapTicketBDFromCSV(csv);
             }
-            if(type == 2)
+            else if(type == 2)
             {
                 ticket = mapTicketEHFromCSV(csv);
             }
-            if(type == 3)
+            else if(type == 3)
             {
                 ticket = mapTicketTKFromCSV(csv);
             }

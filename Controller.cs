@@ -65,7 +65,10 @@ namespace MediaLibrary
                     typeChoice = typeSelector();
 
                     System.Console.WriteLine(actionChoice + " " + typeChoice);
+
+                    optionSelector(actionChoice, typeChoice);
                 }
+                
                 
             }            
             
@@ -78,7 +81,7 @@ namespace MediaLibrary
             if(action == 1)
             {
                 //addMovie();
-                //addTicket(type);               
+                addTicket(type);               
             }
             if(action == 2)
             {
@@ -142,6 +145,7 @@ namespace MediaLibrary
         private static void addTicket(int type)
         {
             string csv = promptNewTicket(type);
+            System.Console.WriteLine(csv);
             Ticket ticket;
             ticket = TicketService.mapTicketFromCSVGenerateID(type, csv);
    // ->         TicketService.addTicket(type, ticket);
@@ -171,6 +175,7 @@ namespace MediaLibrary
         {
             string selection;
             string newCsv = "";
+            bool additionalWatchers = false;
 
             for(int i = 1; i < Model.getBaseNumAttributes(); i++)
             {   
@@ -186,15 +191,24 @@ namespace MediaLibrary
                     }
                     newCsv += selection;
                 }
-                else if(i==2)
+                else
                 {                   
                     while(selection.ToUpper() != Model.getWatcherEscape())
                     {
                         View.creationPrompt(i);
                         selection = System.Console.ReadLine();
-                        if(selection.ToUpper() != Model.getWatcherEscape())
+                        if((selection.ToUpper() != Model.getWatcherEscape()) || !additionalWatchers)
                         {
-                            newCsv += "|";
+                            if(additionalWatchers)
+                            {
+                                newCsv += "|";
+                            }
+                            else
+                            {
+                                newCsv += ",";
+                            }
+                            
+                            additionalWatchers = true;
                             newCsv += selection;
                         }
                     }
@@ -229,7 +243,7 @@ namespace MediaLibrary
                 
                 if(i == 1)
                 {
-                    View.creationPrompt(i);
+                    View.creationPromptBD(i);
                     selection = System.Console.ReadLine();
                     newCsv += ",";
                     newCsv += selection;
@@ -254,7 +268,7 @@ namespace MediaLibrary
                     validDouble = false; 
                     while(!validDouble)
                     {
-                        View.creationPrompt(i);
+                        View.creationPromptEH(i);
                         selection = System.Console.ReadLine();
                         try
                         {
@@ -272,7 +286,7 @@ namespace MediaLibrary
                 } 
                 else
                 {
-                    View.creationPrompt(i);
+                    View.creationPromptEH(i);
                     selection = System.Console.ReadLine();
                     newCsv += ",";
                     newCsv += selection;
@@ -297,7 +311,7 @@ namespace MediaLibrary
                     validDate = false; 
                     while(!validDate)
                     {
-                        View.creationPrompt(i);
+                        View.creationPromptTK(i);
                         selection = System.Console.ReadLine();
                         try
                         {
@@ -315,7 +329,7 @@ namespace MediaLibrary
                 } 
                 else
                 {
-                    View.creationPrompt(i);
+                    View.creationPromptTK(i);
                     selection = System.Console.ReadLine();
                     newCsv += ",";
                     newCsv += selection;
