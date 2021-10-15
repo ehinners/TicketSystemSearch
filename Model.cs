@@ -9,6 +9,8 @@ namespace MediaLibrary
 {  
     public static class Model
     {
+        private static string watcherEscape = "DONE";
+
         // This class allows controller to communicate with services and views
 
         // static instance of logger held so multiple instances don't have to be created
@@ -31,6 +33,11 @@ namespace MediaLibrary
         public static string BugDefectFile;
         public static string EnhancementsFile;
         public static string TaskFile;
+
+        public static string getWatcherEscape()
+        {
+            return watcherEscape;
+        }
 
         public static void setLogger(NLog.Logger l)
         {
@@ -124,6 +131,12 @@ namespace MediaLibrary
             string[] lines = movie.Display().Split("\n");
             return lines.Length - 1;
         }*/
+
+        
+        public static int getBaseNumAttributes()
+        {
+            return 7;
+        }
         /*
         public static void addMovie(Movie movie)
         {

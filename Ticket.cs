@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using NLog.Web;
 
-namespace ClassedTicketSystem
+namespace MediaLibrary
 {
     public abstract class Ticket
     {
@@ -16,23 +16,11 @@ namespace ClassedTicketSystem
         public string assigned { get; set; }
         public string[] watching { get; set; }
 
-        public class BugDefect : Ticket
+        public virtual int getNumAttributes()
         {
-            public string severity;
+            return 7;
         }
 
-        public class Enhancement : Ticket
-        {
-            public string software;
-            public double cost;
-            public string reason;
-            public double estimate;
-        }
-
-        public class Task : Ticket
-        {
-            public string projectName;
-            public DateTime dueDate;
-        }
+        
     }
 }
