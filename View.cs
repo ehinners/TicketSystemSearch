@@ -14,17 +14,17 @@ namespace MediaLibrary
 
         private static ArrayList menuDisplay = new ArrayList()
         {
-            "1) Add Movie" , 
-            "2) Display All Movies", 
+            "1) ", 
+            "2) ", 
             "Enter to quit"
         };
 
         private static ArrayList promptDisplay = new ArrayList()
         {
-            "Enter movie title" , 
-            "Enter genre (or done to quit)", 
-            "Enter movie director",
-            "Enter running time (h:m:s)"
+            "Enter " , 
+            "Enter (or done to quit)", 
+            "Enter ",
+            "Enter "
         };
 
 
@@ -41,6 +41,7 @@ namespace MediaLibrary
             }
         }
 
+        /*
         public static void displayMovies()
         {
             List<Movie> movies = Model.getMovies();
@@ -48,7 +49,7 @@ namespace MediaLibrary
             {
                 System.Console.WriteLine(m.Display());           
             }
-        }
+        } */
 
         public static void creationPrompt(int movieAttribute)
         {

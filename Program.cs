@@ -20,7 +20,7 @@ namespace MediaLibrary
             logger.Info("NLOG Loaded");
 
             Model.setLogger(logger);
-            Model.setFileName("movies.scrubbed.csv");
+            //Model.setFileName("movies.scrubbed.csv");
             Controller.mainLoop();
             
             

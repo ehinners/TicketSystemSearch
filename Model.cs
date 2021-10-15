@@ -47,6 +47,7 @@ namespace MediaLibrary
             return fileContents;            
         }
 
+        /*
         public static List<Movie> getMovies()
         {
             if(movies == null)
@@ -54,9 +55,10 @@ namespace MediaLibrary
                 movies = MovieService.mapMoviesFromStringList(getFileContents());
             }
             return movies;            
-        }
+        }*/
 
         // elminates redundancies in code requiring this value
+        /*
         public static UInt64 getLargestID()
         {
             
@@ -69,20 +71,21 @@ namespace MediaLibrary
                 }
             }
             return largestID;
-        }
+        }*/
 
         // useful in case number of attributes ever changes
+        /*
         public static int getNumAttributes()
         {
             Movie movie = new Movie();
             string[] lines = movie.Display().Split("\n");
             return lines.Length - 1;
-        }
-
+        }*/
+        /*
         public static void addMovie(Movie movie)
         {
             getMovies().Add(movie);
-        }
+        }*/
 
         
 
