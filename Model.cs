@@ -124,15 +124,7 @@ namespace MediaLibrary
             }
             return ticketsTK;            
         }
-        /*
-        public static List<Movie> getMovies()
-        {
-            if(movies == null)
-            {
-                movies = MovieService.mapMoviesFromStringList(getFileContents());
-            }
-            return movies;            
-        }*/
+        
 
         // elminates redundancies in code requiring this value
         
@@ -177,40 +169,27 @@ namespace MediaLibrary
             }
             return largestID;
         }
-        /*
-        public static UInt64 getLargestID()
-        {
-            
-            UInt64 largestID = 0;
-            foreach(Movie m in getMovies())
-            {
-                if(m.mediaId > largestID)
-                {
-                    largestID = m.mediaId;
-                }
-            }
-            return largestID;
-        }*/
-
-        // useful in case number of attributes ever changes
-        /*
-        public static int getNumAttributes()
-        {
-            Movie movie = new Movie();
-            string[] lines = movie.Display().Split("\n");
-            return lines.Length - 1;
-        }*/
-
-        
+              
         public static int getBaseNumAttributes()
         {
             return 7;
         }
-        /*
-        public static void addMovie(Movie movie)
+        
+        
+        public static void addTicketBD(Ticket ticket)
         {
-            getMovies().Add(movie);
-        }*/
+            ticketsBD.Add((BugDefect)ticket);
+        }
+
+        public static void addTicketEH(Ticket ticket)
+        {
+            ticketsEH.Add((Enhancement)ticket);
+        }
+
+        public static void addTicketTK(Ticket ticket)
+        {
+            ticketsTK.Add((Task)ticket);
+        }
 
         
 

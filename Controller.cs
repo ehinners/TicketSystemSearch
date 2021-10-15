@@ -144,13 +144,24 @@ namespace MediaLibrary
             
             Ticket ticket;
             ticket = TicketService.mapTicketFromCSVGenerateID(type, csv);
+            csv = ticket.ticketId.ToString() + "," +csv;
+            if(type == 1)
+            {
+                Model.addTicketBD(ticket);
+                FileHandler.addLineToFile(Model.BugDefectFile, csv);
+            }
+            if(type == 2)
+            {
+                Model.addTicketEH(ticket);
+                FileHandler.addLineToFile(Model.EnhancementsFile, csv);
+            }
+            if(type == 3)
+            {
+                Model.addTicketTK(ticket);
+                FileHandler.addLineToFile(Model.TaskFile, csv);
+            }
 
-            
-   // ->         TicketService.addTicket(type, ticket);
-            //Model.addTicket(type, ticket);
-            //FileHandler.addLineToFile(type, TicketService.ticketToCSV(ticket));
-            //int largestID = Model.getLargestID(type);
-            //Model.getLogger().Info($"Ticket (type) id {largestID} added");
+            Model.getLogger().Info($"Ticket id {ticket.ticketId} added");
         }
 
         /*
