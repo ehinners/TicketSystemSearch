@@ -77,15 +77,33 @@ namespace MediaLibrary
             }
         }
 
-        /*
-        public static void displayMovies()
+        
+        public static void displayTickets(int type)
         {
-            List<Movie> movies = Model.getMovies();
-            foreach(Movie m in movies)
+            
+            if(type ==1)
             {
-                System.Console.WriteLine(m.Display());           
+                foreach(BugDefect t in Model.getTicketsBD())
+                {
+                    System.Console.WriteLine(t.display());           
+                }
             }
-        } */
+            else if(type ==2)
+            {
+                foreach(Enhancement t in Model.getTicketsEH())
+                {
+                    System.Console.WriteLine(t.display());           
+                }
+            }
+            else if(type ==3)
+            {
+                foreach(Task t in Model.getTicketsTK())
+                {
+                    System.Console.WriteLine(t.display());           
+                }
+            }
+            
+        } 
 
         public static void creationPrompt(int ticketAttribute)
         {

@@ -82,7 +82,7 @@ namespace MediaLibrary
             }
             if(action == 2)
             {
-                //View.displayTickets(type);                
+                View.displayTickets(type);                
             }
         }
 
