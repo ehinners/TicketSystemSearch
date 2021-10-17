@@ -191,7 +191,7 @@ namespace MediaLibrary
             List<BugDefect> tickets = new List<BugDefect>();
             foreach(string s in fileContents)
             {
-                mapTicketFromCSV(1, s);
+                tickets.Add((BugDefect)mapTicketFromCSV(1, s));                
             }
             return tickets;
         }
@@ -201,7 +201,7 @@ namespace MediaLibrary
             List<Enhancement> tickets = new List<Enhancement>();
             foreach(string s in fileContents)
             {
-                mapTicketFromCSV(2, s);
+                tickets.Add((Enhancement)mapTicketFromCSV(2, s));
             }
             return tickets;
         }
@@ -211,7 +211,7 @@ namespace MediaLibrary
             List<Task> tickets = new List<Task>();
             foreach(string s in fileContents)
             {
-                mapTicketFromCSV(3, s);
+                tickets.Add((Task)mapTicketFromCSV(3, s));
             }
             return tickets;
         }

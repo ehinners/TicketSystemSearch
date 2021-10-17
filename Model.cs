@@ -103,7 +103,7 @@ namespace MediaLibrary
             if(ticketsBD == null)
             {
                 ticketsBD = TicketService.mapTicketsFromStringListBD(getBugDefectFileContents());
-            }
+            }            
             return ticketsBD;            
         }
 
@@ -133,7 +133,7 @@ namespace MediaLibrary
             
             int largestID = 0;
             foreach(Ticket t in getTicketsBD())
-            {
+            {   
                 if(t.ticketId > largestID)
                 {
                     largestID = t.ticketId;
