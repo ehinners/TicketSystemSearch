@@ -164,16 +164,6 @@ namespace MediaLibrary
             Model.getLogger().Info($"Ticket id {ticket.ticketId} added");
         }
 
-        /*
-        private static void addMovie()
-        {
-            string csv = promptNewMovie();
-            Movie movie = MovieService.mapMovieFromCSVGenerateID(csv);
-            Model.addMovie(movie);
-            FileHandler.addLineToFile(Model.fileName, MovieService.movieToCSV(movie));
-            UInt64 largestID = Model.getLargestID();
-            Model.getLogger().Info($"Media id {largestID} added");
-        }*/
 
         // gets the prompt from the view
         // builds a csv along with user input
@@ -348,85 +338,7 @@ namespace MediaLibrary
             return csv;
         }
 
-        /*
-        private static string promptNewMovie()
-        {
-            string selection;
-            int movieAttribute = 1;
-            string newCsv = "";
-            bool verifiedRuntime = false;
-            bool verifiedUniqueName = false;
-
-            for(int i = 1; i < Model.getNumAttributes(); i++)
-            {   
-                selection = "ready";
-                if(i ==1)
-                {
-                    while(!verifiedUniqueName)
-                    {
-                        View.creationPrompt(i);
-                        selection = System.Console.ReadLine();                        
-                        verifiedUniqueName = !MovieService.findNameRepeats(selection);
-                        if(verifiedUniqueName)
-                        {
-                            newCsv += selection;
-                        }
-                        else
-                        {
-                            Model.getLogger().Error("Input Not Unique Movie Title");
-                        }                                                
-                    }
-                }
-                else if(i == 4)
-                {
-                    while(!verifiedRuntime)
-                    {
-                        View.creationPrompt(i);
-                        selection = System.Console.ReadLine();
-                        
-
-                        try
-                        {
-                            TimeSpan.Parse(selection);
-                            verifiedRuntime = true;
-                        }
-                        catch
-                        {
-                            Model.getLogger().Error("Input Not Valid TimeSpan");
-                        }
-                    }
-                    newCsv += ",";
-                    newCsv += selection;
-                }
-                else
-                {
-                    View.creationPrompt(i);
-                    if(i>1)
-                    {
-                        newCsv += ",";
-                    }
-                    newCsv += System.Console.ReadLine();
-                    if(i==2)
-                    {
-                        while(selection.ToUpper() != genreEscape)
-                        {
-                            View.creationPrompt(i);
-                            selection = System.Console.ReadLine();
-                            if(selection.ToUpper() != genreEscape)
-                            {
-                                newCsv += "|";
-                                newCsv += selection;
-                            }
-                        }
-                    }
-                }
-
-                
-            }
-
-            return newCsv;
-        }*/
-
+        
     }
 
 
