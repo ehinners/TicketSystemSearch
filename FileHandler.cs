@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using NLog.Web;
 
-namespace MediaLibrary
+namespace TripleTicketType
 {  
     public static class FileHandler
     {
