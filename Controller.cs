@@ -258,6 +258,7 @@ namespace TripleTicketType
             string newCsv = csv;
             Enhancement temp = new Enhancement();
             bool validDouble = false;
+            string[] tempDoubleVal;
             for(int i = 1; i <= temp.getNumAttributes() - Model.getBaseNumAttributes(); i++)
             {   
                 selection = "ready";
@@ -272,7 +273,17 @@ namespace TripleTicketType
                         try
                         {
                             double.Parse(selection);
-                            validDouble = true;
+                            tempDoubleVal = selection.Split(".");
+
+                            if(tempDoubleVal[1].Length ==2)
+                            {
+                                validDouble = true;
+                            }
+                            else
+                            {
+                                Model.getLogger().Warn("Monetary Value Must Contain 2 digits past decimal");
+                            }
+                            
                         }
                         catch
                         {

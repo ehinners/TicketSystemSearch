@@ -41,11 +41,11 @@ namespace TripleTicketType
                 toDisplay += "\n";
                 toDisplay += "Software:  " + software;
                 toDisplay += "\n";
-                toDisplay += "Cost:      " + cost;
+                toDisplay += $"Cost:      {cost:F2}";
                 toDisplay += "\n";
                 toDisplay += "Reason:    " + reason;
                 toDisplay += "\n";
-                toDisplay += "Estimate:  " + estimate;
+                toDisplay += $"Estimate:  {estimate:F2}";
                 toDisplay += "\n";
 
                 return toDisplay;
