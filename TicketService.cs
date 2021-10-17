@@ -144,15 +144,31 @@ namespace TripleTicketType
                 }    
                 if(ticketAttribute == 9)    
                 {
-                    ticket.cost = 0.00;
+                    try
+                    {
+                        ticket.cost = double.Parse(property);
+                    }
+                    catch
+                    {
+                        Model.getLogger().Error("Not Valid Double Value");
+                        ticket.cost = 0.00;
+                    }
                 }   
                 if(ticketAttribute == 10)    
                 {
                     ticket.reason = property;
                 } 
-                if(ticketAttribute == 8)    
+                if(ticketAttribute == 11)    
                 {
-                    ticket.estimate = 1.11;
+                    try
+                    {
+                        ticket.estimate = double.Parse(property);
+                    }
+                    catch
+                    {
+                        Model.getLogger().Error("Not Valid Double Value");
+                        ticket.estimate = 1.11;
+                    }
                 } 
                 ticketAttribute++;
             }
@@ -178,7 +194,16 @@ namespace TripleTicketType
                 }  
                 if(ticketAttribute == 9)    
                 {
-                    ticket.dueDate = tempDue;
+                    try
+                    {
+                        ticket.dueDate = DateTime.Parse(property);
+                    }
+                    catch
+                    {
+                        Model.getLogger().Error("Not Valid Double Value");
+                        ticket.dueDate = tempDue;
+                    }
+                    
                 }      
                 ticketAttribute++;
             }
