@@ -38,6 +38,15 @@ namespace MediaLibrary
                     toDisplay += "\n";
                     toDisplay += " - " + s;
                 }
+                toDisplay += "\n";
+                toDisplay += "Software:  " + software;
+                toDisplay += "\n";
+                toDisplay += "Cost:      " + cost;
+                toDisplay += "\n";
+                toDisplay += "Reason:    " + reason;
+                toDisplay += "\n";
+                toDisplay += "Estimate:  " + estimate;
+                toDisplay += "\n";
 
                 return toDisplay;
                 }

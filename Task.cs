@@ -36,6 +36,11 @@ namespace MediaLibrary
                     toDisplay += "\n";
                     toDisplay += " - " + s;
                 }
+                toDisplay += "\n";
+                toDisplay += "Project Name: " + projectName;
+                toDisplay += "\n";
+                toDisplay += "Due Date:     " + dueDate;
+                toDisplay += "\n";
 
                 return toDisplay;
             }

@@ -35,6 +35,9 @@ namespace MediaLibrary
                     toDisplay += "\n";
                     toDisplay += " - " + s;
                 }
+                toDisplay += "\n";
+                toDisplay += "Severity:  " + severity;
+                toDisplay += "\n";
 
                 return toDisplay;
             }
