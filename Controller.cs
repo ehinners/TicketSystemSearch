@@ -107,6 +107,32 @@ namespace TicketSystemSearch
             }
         }
 
+        private static string searchTermSelector()
+        {
+            
+            bool keepAsking = true;
+            string input = "";
+
+            while(keepAsking)
+            {
+                View.promptSelectorTerms();
+                input = System.Console.ReadLine();
+                foreach(string s in Model.getSelectorTerms())
+                {
+                    if(s.ToUpper() == input.ToUpper())
+                    {
+                        keepAsking = false;
+                    }
+                }
+                if(keepAsking)
+                {
+                    Model.getLogger().Warn("Not Valid Search Term");
+                }
+            }
+
+            return input.ToUpper();
+        }
+
         
 
         private static int typeSelector()
@@ -151,6 +177,7 @@ namespace TicketSystemSearch
         
         private static void searchTickets()
         {
+            string searchTerm = searchTermSelector();
             View.displaySearchPrompt();
         }
         

@@ -23,6 +23,18 @@ namespace TicketSystemSearch
         {
             return typeOptions;
         }
+
+        private static List<string> selectorTerms = new List<string>()
+        {
+            "status",
+            "priority",
+            "submitter"
+        };
+
+        public static List<string> getSelectorTerms()
+        {
+            return selectorTerms;
+        }
         private static string watcherEscape = "DONE";
 
         // This class allows controller to communicate with services and views

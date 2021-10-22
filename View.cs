@@ -59,6 +59,22 @@ namespace TicketSystemSearch
         };
 
 
+        public static void promptSelectorTerms()
+        {
+            int counter = 1;
+            System.Console.WriteLine("Please Enter A Term To Search On");
+            foreach(string s in Model.getSelectorTerms())
+            {
+                System.Console.Write(" '"+s+"'");
+                if(counter != Model.getSelectorTerms().Count)
+                {
+                    System.Console.Write(", ");
+                }
+                counter++;
+            }
+            System.Console.WriteLine();
+        }
+
         public static void setMenuDisplay(ArrayList md)
         {
             menuDisplay = md;
