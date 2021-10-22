@@ -13,7 +13,7 @@ namespace TicketSystemSearch
         // what is listed here is input from the user, the program will end
         private static ArrayList actionOptions = new ArrayList()
         {
-            "1","2"
+            "1","2","3"
         };
 
         private static ArrayList typeSensitiveOptions = new ArrayList()
@@ -90,6 +90,10 @@ namespace TicketSystemSearch
             {
                 View.displayTicketsAll();
             }
+            if(action == 3)
+            {
+                searchTickets();
+            }
         }
         private static void optionTypeSensitiveSelector(int action, int type)
         {
@@ -145,7 +149,10 @@ namespace TicketSystemSearch
         }
 
         
-
+        private static void searchTickets()
+        {
+            View.displaySearchPrompt();
+        }
         
 
         //creates a csv string through user prompt

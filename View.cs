@@ -16,8 +16,11 @@ namespace TicketSystemSearch
         {
             "1: To Create A New Ticket", 
             "2: To View All Current Tickets", 
+            "3: Search Tickets",
             "Enter to quit"
         };
+
+        private static string searchPrompt = "Please Enter Your Search Term:";
 
         private static ArrayList typeDisplay = new ArrayList()
         {
@@ -59,6 +62,11 @@ namespace TicketSystemSearch
         public static void setMenuDisplay(ArrayList md)
         {
             menuDisplay = md;
+        }
+
+        public static void displaySearchPrompt()
+        {
+            System.Console.WriteLine(searchPrompt);
         }
 
         public static void displayMenu()
