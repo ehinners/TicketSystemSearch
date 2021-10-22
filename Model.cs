@@ -238,14 +238,29 @@ namespace TicketSystemSearch
             ticketsBD.Add((BugDefect)ticket);
         }
 
+        public static void addTicketBDSourceFromCSV(string csv)
+        {
+            FileHandler.addLineToFile(Model.BugDefectFile, csv);
+        }
+        
         public static void addTicketEH(Ticket ticket)
         {
             ticketsEH.Add((Enhancement)ticket);
         }
 
+        public static void addTicketEHSourceFromCSV(string csv)
+        {
+            FileHandler.addLineToFile(Model.EnhancementsFile, csv);
+        }
+
         public static void addTicketTK(Ticket ticket)
         {
             ticketsTK.Add((Task)ticket);
+        }
+
+        public static void addTicketTKSourceFromCSV(string csv)
+        {
+            FileHandler.addLineToFile(Model.TaskFile, csv);
         }
 
         

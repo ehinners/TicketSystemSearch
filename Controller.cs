@@ -226,17 +226,17 @@ namespace TicketSystemSearch
             if(type == 1)
             {
                 Model.addTicketBD(ticket);
-                FileHandler.addLineToFile(Model.BugDefectFile, csv);
+                Model.addTicketBDSourceFromCSV(csv);
             }
             if(type == 2)
             {
                 Model.addTicketEH(ticket);
-                FileHandler.addLineToFile(Model.EnhancementsFile, csv);
+                Model.addTicketEHSourceFromCSV(csv);
             }
             if(type == 3)
             {
                 Model.addTicketTK(ticket);
-                FileHandler.addLineToFile(Model.TaskFile, csv);
+                Model.addTicketTKSourceFromCSV(csv);
             }
 
             Model.getLogger().Info($"Ticket id {ticket.ticketId} added");
