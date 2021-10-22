@@ -109,7 +109,17 @@ namespace TicketSystemSearch
             }
         }
 
-        public static void displaySelectedTickets(List<Ticket> tickets)
+        public static void displaySelectedTicketsRecap(IEnumerable<Ticket> tickets)
+        {
+            Console.WriteLine($"There are {tickets.Count()} tickets with your search term");
+        }
+
+        public static void menuStep()
+        {
+            System.Console.WriteLine("Please Enter To Continue:");
+        }
+
+        public static void displaySelectedTickets(IEnumerable<Ticket> tickets)
         {
             foreach(Ticket t in tickets)
             {

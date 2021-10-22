@@ -182,6 +182,7 @@ namespace TicketSystemSearch
             string input = System.Console.ReadLine();
 
             IEnumerable<Ticket> temp = new List<Ticket>();
+            IEnumerable<Ticket> results = new List<Ticket>();
             List<Ticket> conversionList = new List<Ticket>();
             System.Console.WriteLine("SCANNING TICKETS.....");
             for(int i = 1; i<=Model.getNumTicketTypes();i++)
@@ -199,12 +200,12 @@ namespace TicketSystemSearch
                     temp = Model.getTicketsBasedOnNumType(i).Where(t => t.submitter.Contains(input));
                 }  
 
-                foreach(Ticket t in temp)
-                {
-                    conversionList.Add(t);
-                }        
+                results = results.Concat(temp);
             }
-            View.displaySelectedTickets(conversionList);
+            View.displaySelectedTicketsRecap(results);
+            View.menuStep();
+            System.Console.ReadLine();
+            View.displaySelectedTickets(results);
         }
         
 
