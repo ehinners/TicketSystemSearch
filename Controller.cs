@@ -16,9 +16,9 @@ namespace TicketSystemSearch
             "1","2"
         };
 
-        private static ArrayList typeOptions = new ArrayList()
+        private static ArrayList typeSensitiveOptions = new ArrayList()
         {
-            "1","2","3"
+            "1"
         };
 
         //Model.getLogger()
@@ -51,7 +51,13 @@ namespace TicketSystemSearch
                         {
                             actionChoice = int.Parse(input);
                             keepLoop = true;
-                            needsTypeChoice = true;
+                            foreach(string sa in typeSensitiveOptions)
+                            {
+                                if(sa==input)
+                                {
+                                    needsTypeChoice = true;
+                                }
+                            }                            
                         }
                         catch
                         {
@@ -64,7 +70,11 @@ namespace TicketSystemSearch
                 {
                     typeChoice = typeSelector();
 
-                    optionSelector(actionChoice, typeChoice);
+                    optionTypeSensitiveSelector(actionChoice, typeChoice);
+                }
+                else if(keepLoop)
+                {
+                    optionSelector(actionChoice);
                 }
                 
                 
@@ -74,7 +84,14 @@ namespace TicketSystemSearch
         
 
         // Delegates to other methods based on user input
-        private static void optionSelector(int action, int type)
+        private static void optionSelector(int action)
+        {
+            if(action == 2)
+            {
+                View.displayTicketsAll();
+            }
+        }
+        private static void optionTypeSensitiveSelector(int action, int type)
         {
             if(action == 1)
             {
@@ -101,7 +118,7 @@ namespace TicketSystemSearch
                 input = Console.ReadLine();
 
                 verifiedType = false;
-                foreach(string s in typeOptions)
+                foreach(string s in Model.getTypeOptions())
                 {
                     if(s==input)
                     {

@@ -9,6 +9,20 @@ namespace TicketSystemSearch
 {  
     public static class Model
     {
+        private static ArrayList typeOptions = new ArrayList()
+        {
+            "1","2","3"
+        };
+
+        public static int getNumTicketTypes()
+        {
+            return typeOptions.Count;
+        }
+
+        public static ArrayList getTypeOptions()
+        {
+            return typeOptions;
+        }
         private static string watcherEscape = "DONE";
 
         // This class allows controller to communicate with services and views

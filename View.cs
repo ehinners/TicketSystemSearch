@@ -77,7 +77,13 @@ namespace TicketSystemSearch
             }
         }
 
-        
+        public static void displayTicketsAll()
+        {
+            for(int i = 1; i<=Model.getNumTicketTypes(); i++)
+            {
+                displayTickets(i);
+            }
+        }
         public static void displayTickets(int type)
         {
             
