@@ -123,6 +123,37 @@ namespace TicketSystemSearch
             return taskFileContents;            
         }
 
+        public static List<Ticket> getTicketsBasedOnNumType(int type)
+        {
+            List<Ticket> tickets = new List<Ticket>();
+            if(type == 1)
+            {
+                //tickets = getTicketsBD();
+                foreach(BugDefect t in getTicketsBD())
+                {
+                    tickets.Add((Ticket)t);
+                }
+            }
+            if(type == 2)
+            {
+                //tickets = getTicketsEH();
+                foreach(Enhancement t in getTicketsEH())
+                {
+                    tickets.Add((Ticket)t);
+                }
+            }
+            if(type == 3)
+            {
+                //tickets = getTicketsTK();
+                foreach(Task t in getTicketsTK())
+                {
+                    tickets.Add((Ticket)t);
+                }
+            }
+
+            return tickets;
+        }
+
         ////
         public static List<BugDefect> getTicketsBD()
         {

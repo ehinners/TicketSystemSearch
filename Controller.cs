@@ -177,8 +177,34 @@ namespace TicketSystemSearch
         
         private static void searchTickets()
         {
-            string searchTerm = searchTermSelector();
+            string searchTerm = searchTermSelector().ToLower();
             View.displaySearchPrompt();
+            string input = System.Console.ReadLine();
+
+            IEnumerable<Ticket> temp = new List<Ticket>();
+            List<Ticket> conversionList = new List<Ticket>();
+            System.Console.WriteLine("SCANNING TICKETS.....");
+            for(int i = 1; i<=Model.getNumTicketTypes();i++)
+            {
+                if(searchTerm == "status")
+                {
+                    temp = Model.getTicketsBasedOnNumType(i).Where(t => t.status.Contains(input));                    
+                }
+                if(searchTerm == "priority")
+                {
+                    temp = Model.getTicketsBasedOnNumType(i).Where(t => t.priority.Contains(input));
+                }
+                else if(searchTerm == "submitter")
+                {
+                    temp = Model.getTicketsBasedOnNumType(i).Where(t => t.submitter.Contains(input));
+                }  
+
+                foreach(Ticket t in temp)
+                {
+                    conversionList.Add(t);
+                }        
+            }
+            View.displaySelectedTickets(conversionList);
         }
         
 

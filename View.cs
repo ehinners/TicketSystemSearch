@@ -108,6 +108,14 @@ namespace TicketSystemSearch
                 displayTickets(i);
             }
         }
+
+        public static void displaySelectedTickets(List<Ticket> tickets)
+        {
+            foreach(Ticket t in tickets)
+            {
+                System.Console.WriteLine(t.display());                
+            }
+        }
         public static void displayTickets(int type)
         {
             
