@@ -6,7 +6,7 @@ using System.Linq;
 using NLog.Web;
 
 
-namespace TripleTicketType
+namespace TicketSystemSearch
 {  
     public static class TicketService
     {

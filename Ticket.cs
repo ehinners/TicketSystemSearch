@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using NLog.Web;
 
-namespace TripleTicketType
+namespace TicketSystemSearch
 {
     public abstract class Ticket
     {

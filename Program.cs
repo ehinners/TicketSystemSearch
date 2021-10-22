@@ -3,7 +3,7 @@ using System.IO;
 using NLog.Web;
 using System.Collections.Generic;
 
-namespace TripleTicketType
+namespace TicketSystemSearch
 {
     class Program
     {
